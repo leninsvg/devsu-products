@@ -1,5 +1,4 @@
 import { PagesPipe } from './pages.pipe';
-import { pipe } from 'rxjs';
 
 describe('PagesPipe', () => {
   it('create an instance', () => {
