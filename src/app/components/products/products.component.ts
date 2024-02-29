@@ -7,6 +7,7 @@ import { ProductService } from '../../services/product.service';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
+import { PaginatorModel } from '../../models/paginator.model';
 
 @Component({
   selector: 'app-products',
@@ -25,7 +26,7 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent {
-  protected filterForm: FormGroup;
+  public filterForm: FormGroup;
   protected productPage: ProductPage;
   protected products: ProductModel[];
 
@@ -38,7 +39,7 @@ export class ProductsComponent {
     this.getProducts().then();
   }
 
-  protected async deleteProduct(id: string): Promise<void> {
+  public async deleteProduct(id: string): Promise<void> {
     const product = this.products.find(product => product.id === id);
     if (!confirm(`Estas seguro de eliminar el producto ${product?.id}`)) {
       return;
@@ -47,7 +48,7 @@ export class ProductsComponent {
     await lastValueFrom(this.productService.getProducts());
   }
 
-  protected async changePageHandler(filter: any): Promise<void> {
+  public async changePageHandler(filter: PaginatorModel): Promise<void> {
     this.filterForm.patchValue(filter)
     this.productPage = this.getFilteredProducts();
   }
