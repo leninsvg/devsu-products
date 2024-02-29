@@ -67,4 +67,10 @@ describe('FormProductComponent', () => {
     const elem: HTMLElement = fixture.debugElement.query(By.css('.title'))?.nativeElement;
     expect(elem.innerHTML).toContain('Formulario de Actualizacion');
   }))
+
+  it('resetProductForm', () => {
+    component.initProductForm();
+    fixture.detectChanges();
+    expect(component.productForm.value).toEqual({id: '', name: '', logo: '', date_release: '', description: ''});
+  })
 });

@@ -61,7 +61,7 @@
         </div>
         <div class="flex content-center m-20">
           <div *ngIf="this.flow === 'create'">
-            <button class="custom-button mr-20" type="button" (click)="this.resetProductForm()">Reiniciar</button>
+            <button class="custom-button mr-20" type="button" (click)="this.initProductForm()">Reiniciar</button>
             <button class="custom-button bg-yellow" [disabled]="this.productForm.invalid || this.productForm.pending" type="button"
                     (click)="this.createProduct()">Enviar
             </button>

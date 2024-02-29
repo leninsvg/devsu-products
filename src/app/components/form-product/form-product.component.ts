@@ -21,7 +21,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './form-product.component.scss'
 })
 export class FormProductComponent {
-  protected productForm: FormGroup;
+  public productForm: FormGroup;
   protected flow: string;
   public title: string;
   private flowStrategy: any;
@@ -45,10 +45,6 @@ export class FormProductComponent {
     this.flowStrategy[flow]();
   }
 
-  protected resetProductForm(): void {
-    this.productForm.reset();
-  }
-
   protected async updateProduct(): Promise<void> {
     if (this.productForm.invalid) {
       return;
@@ -59,7 +55,7 @@ export class FormProductComponent {
   }
 
 
-  protected async createProduct(): Promise<void> {
+  public async createProduct(): Promise<void> {
     if (this.productForm.invalid) {
       return;
     }
@@ -75,7 +71,7 @@ export class FormProductComponent {
     this.initActionStrategy();
   }
 
-  private initProductForm(): void {
+  public initProductForm(): void {
     this.productForm = this.formBuilder.group({
       id: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)], [this.customAsyncValidators.existProduct]],
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
