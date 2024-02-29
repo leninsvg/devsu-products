@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { DatePipe, JsonPipe, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 
 @Component({
@@ -21,4 +21,9 @@ export class CustomErrorMessageComponent {
   public customControl: AbstractControl;
   @Input()
   public displayName: string;
+
+  constructor() {
+    this.customControl = new FormControl();
+    this.displayName = '';
+  }
 }
