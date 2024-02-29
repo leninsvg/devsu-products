@@ -1,0 +1,22 @@
+<div class="py-10 w-100 flex content-between">
+  <div class="bold">
+    <div>
+      Pagina {{this.page}} de {{(this.total | pages: this.pageSize)?.length}}
+    </div>
+    <div>
+      {{ this.total }} - Resultados
+    </div>
+  </div>
+  <div class="flex center">
+    <div class="mr-20">
+      <button (click)="this.changePage(auxPage)" *ngFor="let auxPage of (this.total | pages: this.pageSize)">
+        {{auxPage}}
+      </button>
+    </div>
+    <select [(ngModel)]="this.pageSize" (change)="this.changePageSize()">
+      <option *ngFor="let pageSize of this.pageSizes">{{ pageSize }}</option>
+    </select>
+  </div>
+</div>
+
+

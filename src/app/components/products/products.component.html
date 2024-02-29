@@ -1,0 +1,33 @@
+<div style="padding: 50px">
+  <div [formGroup]="this.filterForm" class="flex content-between">
+    <input formControlName="filter" type="text" placeholder="Buscar...">
+    <button class="custom-button bg-yellow" [routerLink]="['/products/create']">Crear producto</button>
+  </div>
+  <div class="full-width" style="overflow-x: scroll">
+    <div class="flex-container">
+      <div class="bold">Logo</div>
+      <div class="bold">Nombre del producto</div>
+      <div class="bold">Descripcion</div>
+      <div class="bold">Fecha de liberacion</div>
+      <div class="bold">Fecha de reestructuracion</div>
+      <div></div>
+    </div>
+    <div class="flex-container" *ngFor="let product of productPage.items">
+      <div>
+        <img width="50px" [src]="product.logo">
+      </div>
+      <div>{{ product.name }}</div>
+      <div>{{ product.description }}</div>
+      <div>{{ product.date_release | date: 'dd/MM/yyyy': 'UTC+00:00' }}</div>
+      <div>{{ product.date_revision | date: 'dd/MM/yyyy': 'UTC+00:00' }}</div>
+      <div>
+        <button class="custom-button m-5" [routerLink]="['/products/edith']" [queryParams]="product">Editar</button>
+        <button class="custom-button m-5" (click)="this.deleteProduct(product.id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+  <custom-paginator [total]="this.productPage.total" [page]="this.filterForm.get('page')?.value"
+                    (changePageHandler)="this.changePageHandler($event)"></custom-paginator>
+</div>
+
+

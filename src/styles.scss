@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: rgb(245, 247, 246);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center {
+  align-items: center;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-50 {
+  width: 80%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.content-between {
+  justify-content: space-between;
+}
+
+.content-center {
+  justify-content: center;
+}
+
+.text-dark-blue {
+  color: darkblue;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-yellow {
+  background-color: #ffdd00;
+}
+
+.bg-yellow[disabled] {
+  opacity: 50%;
+}
+
+
+.py-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.px-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.m-5 {
+  margin: 5px;
+}
+
+
+.m-20 {
+  margin: 20px;
+}
+
+.custom-input {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+.border-danger {
+  border-color: red;
+}
+
+.custom-button {
+  width: 100px;
+  border-radius: 5px;
+  height: 40px;
+  cursor: pointer;
+  border-style: none;
+  color: darkblue;
+}
+
+.bold {
+  font-weight: bold;
+}

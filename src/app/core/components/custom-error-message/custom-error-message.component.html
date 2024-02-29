@@ -1,0 +1,7 @@
+<div class="danger" *ngIf="this.customControl.invalid && this.customControl.dirty">
+  <div *ngIf="this.customControl.hasError('required')">Este campo es requerido</div>
+  <div *ngIf="this.customControl.hasError('minlength')">Porfavor ingrese el minimo de caracteres de {{this.customControl.errors?.['minlength']?.requiredLength}}</div>
+  <div *ngIf="this.customControl.hasError('maxlength')">Sobrepaso los caracteres maximo de {{this.customControl.errors?.['maxlength']?.requiredLength}}</div>
+  <div *ngIf="this.customControl.hasError('minDate')">La fecha seleccionada tiene que ser superior a la fecha minima de {{this.customControl.errors?.['minDate']?.requiredDate | date: 'MM/dd/yyyy'}}</div>
+  <div *ngIf="this.customControl.hasError('existProduct')">Ya existe este registro</div>
+</div>

@@ -1,0 +1,76 @@
+<div class="flex content-center">
+  <div class="w-80">
+    <div class="m-20">
+      <a [routerLink]="['/products']">< Lista de productos</a>
+    </div>
+    <div class="flex content-center">
+      <div class="bg-white" style="width: 500px; border-radius: 5px" [formGroup]="this.productForm">
+        <div class="flex content-center m-20">{{ this.title }}</div>
+        <hr>
+        <div class="flex px-20 py-10">
+          <div class="w-50">
+            <div class="w-100">
+              ID
+            </div>
+            <input class="custom-input" type="text" formControlName="id" [class.border-danger]="this.productForm.controls['id'].invalid">
+            <custom-error-message [customControl]="this.productForm.controls['id']"
+                                  displayName="ID"></custom-error-message>
+          </div>
+          <div class="w-50">
+            <div class="w-100">
+              Nombre
+            </div>
+            <input class="custom-input" type="text" formControlName="name" [class.border-danger]="this.productForm.controls['name'].invalid">
+            <custom-error-message [customControl]="this.productForm.controls['name']"
+                                  displayName="Nombre"></custom-error-message>
+          </div>
+        </div>
+        <div class="flex px-20 py-10">
+          <div class="w-50">
+            <div class="w-100">
+              Descripcion
+            </div>
+            <input class="custom-input" type="text" formControlName="description" [class.border-danger]="this.productForm.controls['description'].invalid">
+            <custom-error-message [customControl]="this.productForm.controls['description']"
+                                  displayName="Descripcion"></custom-error-message>
+          </div>
+          <div class="w-50">
+            <div class="w-100">
+              Logo
+            </div>
+            <input class="custom-input" type="text" formControlName="logo" [class.border-danger]="this.productForm.controls['logo'].invalid">
+            <custom-error-message [customControl]="this.productForm.controls['logo']"
+                                  displayName="Logo"></custom-error-message>
+          </div>
+        </div>
+        <div class="flex px-20 py-10">
+          <div class="w-50">
+            <div class="w-100">
+              Fecha de liberacion
+            </div>
+            <input class="custom-input" type="date" formControlName="date_release" [class.border-danger]="this.productForm.controls['date_release'].invalid">
+            <custom-error-message [customControl]="this.productForm.controls['date_release']"
+                                  displayName="Fecha de liberacion"></custom-error-message>
+          </div>
+          <div class="w-50">
+            <div class="w-100">Fecha de revision</div>
+            <input class="custom-input" type="date" formControlName="date_revision" [class.border-danger]="this.productForm.controls['date_revision'].invalid">
+            <custom-error-message [customControl]="this.productForm.controls['date_revision']"
+                                  displayName="Fecha de revision"></custom-error-message>
+          </div>
+        </div>
+        <div class="flex content-center m-20">
+          <div *ngIf="this.flow === 'create'">
+            <button class="custom-button mr-20" type="button" (click)="this.resetProductForm()">Reiniciar</button>
+            <button class="custom-button bg-yellow" [disabled]="this.productForm.invalid || this.productForm.pending" type="button"
+                    (click)="this.createProduct()">Enviar
+            </button>
+          </div>
+          <div *ngIf="this.flow === 'edith'">
+            <button class="custom-button bg-yellow" [disabled]="this.productForm.invalid" type="button" (click)="this.updateProduct()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
