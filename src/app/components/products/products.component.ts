@@ -5,7 +5,7 @@ import { CustomPaginatorComponent } from '../../core/components/custom-paginator
 import { ProductModel, ProductPage } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
 import { RouterLink } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
 
 @Component({
@@ -25,7 +25,6 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent {
-  protected filterControl: FormControl;
   protected filterForm: FormGroup;
   protected productPage: ProductPage;
   protected products: ProductModel[];
@@ -59,7 +58,6 @@ export class ProductsComponent {
       items: [],
       total: 0
     };
-    this.filterControl = new FormControl<string>('');
     this.initFilterForm();
     this.initFilterProductListener();
   }

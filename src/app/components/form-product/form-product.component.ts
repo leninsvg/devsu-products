@@ -23,7 +23,7 @@ import { NgIf } from '@angular/common';
 export class FormProductComponent {
   protected productForm: FormGroup;
   protected flow: string;
-  protected title: string;
+  public title: string;
   private flowStrategy: any;
 
   constructor(
@@ -35,7 +35,14 @@ export class FormProductComponent {
     private activateRouter: ActivatedRoute,
   ) {
     this.initVariables();
-    this.flowStrategy[this.flow]();
+    this.flowStrategyHandler(this.flow)
+  }
+
+  public flowStrategyHandler(flow: string): void {
+    if (!this.flowStrategy[flow]) {
+      return;
+    }
+    this.flowStrategy[flow]();
   }
 
   protected resetProductForm(): void {
@@ -96,6 +103,7 @@ export class FormProductComponent {
         this.title = 'Formulario de Registro';
       },
       edith: async () => {
+        debugger
         this.title = 'Formulario de Actualizacion';
         const product = {...this.activateRouter.snapshot.queryParams};
         product['date_release'] = product['date_release'].split('T')[0];
