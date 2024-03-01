@@ -3,10 +3,12 @@ import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testi
 import { FormProductComponent } from './form-product.component';
 import { DatePipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { ProductModel } from '../../models/product.model';
+import { ProductsComponent } from '../products/products.component';
+import { PRODUCTS } from '../../mocks/product.mock';
 
 describe('FormProductComponent', () => {
   let component: FormProductComponent;
@@ -23,7 +25,11 @@ describe('FormProductComponent', () => {
     });
 
     await TestBed.configureTestingModule({
-      imports: [FormProductComponent],
+      imports: [
+        FormProductComponent,
+        RouterModule.forRoot([
+          {path: 'products', component: ProductsComponent}]
+        )],
       providers: [
         DatePipe,
         {
@@ -73,4 +79,27 @@ describe('FormProductComponent', () => {
     fixture.detectChanges();
     expect(component.productForm.value).toEqual({id: '', name: '', logo: '', date_release: '', description: ''});
   })
+
+  it('createProduct success', fakeAsync(() => {
+    const product = PRODUCTS[0];
+    productServiceSpy.createProduct.and.returnValue(of(product));
+    productServiceSpy.verificationProduct.and.returnValue(of(false));
+    component.productForm.reset(product);
+    flush();
+    component.createProduct();
+    fixture.detectChanges();
+    expect(productServiceSpy.createProduct.calls.count()).toBe(1);
+    expect(productServiceSpy.verificationProduct.calls.count()).toBe(1);
+  }));
+
+  it('updateProduct success', fakeAsync(() => {
+    const product = PRODUCTS[0];
+    productServiceSpy.updateProduct.and.returnValue(of(product));
+    productServiceSpy.verificationProduct.and.returnValue(of(false));
+    component.productForm.reset(product);
+    flush();
+    component.updateProduct();
+    fixture.detectChanges();
+    expect(productServiceSpy.updateProduct.calls.count()).toBe(1);
+  }));
 });

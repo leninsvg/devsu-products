@@ -45,7 +45,7 @@ export class FormProductComponent {
     this.flowStrategy[flow]();
   }
 
-  protected async updateProduct(): Promise<void> {
+  public async updateProduct(): Promise<void> {
     if (this.productForm.invalid) {
       return;
     }
@@ -99,7 +99,6 @@ export class FormProductComponent {
         this.title = 'Formulario de Registro';
       },
       edith: async () => {
-        debugger
         this.title = 'Formulario de Actualizacion';
         const product = {...this.activateRouter.snapshot.queryParams};
         product['date_release'] = product['date_release'].split('T')[0];
