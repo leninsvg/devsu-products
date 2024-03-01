@@ -58,7 +58,7 @@ describe('ProductsComponent', () => {
 
   it('deleteProduct confirm true', fakeAsync(() => {
     spyOn(window, 'confirm').and.returnValue(true);
-    productServiceSpy.deleteProduct.and.returnValue(of(undefined));
+    productServiceSpy.deleteProduct.and.returnValue(of(''));
     component.deleteProduct('id0');
     fixture.detectChanges()
     flush()

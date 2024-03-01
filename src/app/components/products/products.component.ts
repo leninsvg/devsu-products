@@ -45,7 +45,7 @@ export class ProductsComponent {
       return;
     }
     await lastValueFrom(this.productService.deleteProduct(id));
-    await lastValueFrom(this.productService.getProducts());
+    await this.getProducts();
   }
 
   public async changePageHandler(filter: PaginatorModel): Promise<void> {

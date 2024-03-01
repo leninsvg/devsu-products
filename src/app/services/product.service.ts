@@ -28,8 +28,8 @@ export class ProductService {
     return this.httpClient.put<ProductModel>(`${this.url}`, product);
   }
 
-  public deleteProduct(id: string): Observable<void> {
-    return this.httpClient.delete<void>(`${this.url}`, {params: {id}});
+  public deleteProduct(id: string): Observable<string> {
+    return this.httpClient.delete(`${this.url}`, {params: {id}, responseType: 'text'});
   }
 
   public verificationProduct(id: string): Observable<boolean> {
