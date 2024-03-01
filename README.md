@@ -4,3 +4,6 @@
 ```ng server```
 ### Run the testing
 ```ng test --no-watch --code-coverage```
+### environment.ts
+
+here the base configurations how author id and apiUrlBase
